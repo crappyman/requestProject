@@ -1,0 +1,44 @@
+
+<div class="container m-5">
+    <div class="card-header bg-warning text-white">Review Request</div>
+    <form #myFormTemplate="ngForm" (ngSubmit)="reviewRequest()">
+            <div class="card-body">   
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">Req ID :</label>
+                    {{ pendingRequest.reqId }}
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">User ID :</label>
+                    {{ pendingRequest.userId }}
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">Type :</label>
+                    {{ pendingRequest.reqType }}
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">Amount :</label>
+                    {{ pendingRequest.reqAmount }}
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">Manager :</label>
+                    {{ pendingRequest.manager }}
+                </div>
+                
+                <div class="mb-3 mt-3">
+                    <label for="reqStatus" class="form-label">Status:</label>
+                    <select class="form-select" id="reqStatus" [(ngModel)]="pendingRequest.reqStatus" name="req-status">
+            
+                        <!-- <input id="role" class="form-control" hidden="hidden" placeholder="select role" name="userRole" [(ngModel)]="newUser.role_id"> -->
+                        <option value="0"></option>
+                        <option value="2">approve</option>
+                        <option value="3">denied</option>
+                    </select>
+                </div>
+            <div class="card-footer bg-warning">
+                <button [disabled]="!myFormTemplate.valid"
+                    type="submit" class="btn btn-warning">
+                    <i class="material-icons">check</i></button>
+            </div>
+            </div>
+        </form>
+</div>

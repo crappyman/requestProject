@@ -1,0 +1,70 @@
+<div class="container mt-5">
+    <div class="card-header bg-warning">Update Account Information</div>
+        <form #myFormTemplate="ngForm" (ngSubmit)="updateAccount()">
+            <div class="card-body">
+            <div class="mb-3 mt-3">
+                <label for="id" class="form-label">User ID:</label>
+                <input type="text" 
+                       class="form-control" 
+                       [(ngModel)]="newAccount.userID" 
+                       name="userId"
+                       disabled>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="username" 
+                       placeholder="Enter username" 
+                       name="userName"
+                       required #myUsername="ngModel"
+                       [(ngModel)]="newAccount.username">
+                <div *ngIf="!myUsername.valid" class="small text-danger">Username requested!</div>
+            </div>
+            <div class="mb-3">
+                <label for="pwd" class="form-label">Password:</label>
+                <input type="password" 
+                       class="form-control" 
+                       id="pwd" 
+                       placeholder="Enter password" 
+                       name="userPswd"
+                       required #myPwd="ngModel"
+                       [(ngModel)]="newAccount.password">
+                <div *ngIf="!myPwd.valid" class="small text-danger">Password requested!</div>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="name" class="form-label">Full Name:</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="name" 
+                       placeholder="Enter fullname"
+                       name="userfullName"
+                       required #myName="ngModel"
+                       [(ngModel)]="newAccount.fullName">
+                <div *ngIf="!myName.valid" class="small text-danger">Name requested!</div>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="email" 
+                       placeholder="Enter username" 
+                       name="userEmail"
+                       required #myTitle="ngModel"
+                       [(ngModel)]="newAccount.email">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="role" class="form-label">Role ID:</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="role"
+                       [(ngModel)]="newAccount.role_id" 
+                       name="roleId" 
+                       disabled>
+            </div>
+            <div class="card-footer bg-warning">
+                <button [disabled]="!myFormTemplate.valid" type="submit" class="btn btn-light">UPDATE</button>
+            </div>
+    </div>
+    </form>
+</div>

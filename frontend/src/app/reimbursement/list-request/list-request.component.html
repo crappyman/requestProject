@@ -1,0 +1,96 @@
+<div>
+    <div class="container mt-3">
+        <h2>Reimbursement Requests</h2>
+        <p>List of employee Reimbursement request informations</p>
+
+        <div>
+            <div>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-warning btn-block" (click)="toggleAllRequests()">All Reimbursement Request</button>
+                </div>
+                <table class="table table-hover" *ngIf="toggleRequests">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>User ID</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Submited Date</th>
+                            <th>Approveed Date</th>
+                            <th>Manager</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let request of allRequests">
+                            <td>{{ request.reqId }}</td>
+                            <td>{{ request.userId }}</td>
+                            <td type="password" placeholder="Password">{{ request.reqType }}</td>
+                            <td>{{ request.reqAmount | currency }}</td>
+                            <td>{{ request.reqStatus }}</td>
+                            <td>{{ request.submitDate }}</td>
+                            <td>{{ request.approveDate }}</td>
+                            <td>{{ request.manager }}</td>
+                            <!-- <td>
+                                <button type="button" class="btn btn-warning">
+                                    <i class="material-icons">check</i></button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-warning">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-warning btn-block" (click)="togglePending()">All Pending Reimbursement Request</button>
+                </div>
+
+                <table class="table table-hover" *ngIf="togglePReq">
+                    <thead>
+                        <tr>
+                            <th>Request IDD</th>
+                            <th>User ID</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Submited Date</th>
+                            <th>Approveed Date</th>
+                            <th>Manager</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let request of pendingRequests ">
+                            
+                            <td>{{ request.reqId }}</td>
+                            <td>{{ request.userId }}</td>
+                            <td type="password" placeholder="Password">{{ request.reqType }}</td>
+                            <td>{{ request.reqAmount | currency }}</td>
+                            <td>{{ request.reqStatus }}</td>
+                            <td>{{ request.submitDate }}</td>
+                            <td>{{ request.approveDate }}</td>
+                            <td>{{ request.manager }}</td>
+                            
+                            <td>
+                                <button type="button" class="btn btn-warning" (click)="acceptRequest(request.reqId)">
+                                    <i class="material-icons">check</i></button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-warning"(click)="denieRequest(request.reqId)">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </td>
+                       
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+       

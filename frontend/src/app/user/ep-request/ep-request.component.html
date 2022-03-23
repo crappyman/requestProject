@@ -1,0 +1,102 @@
+<div class="container mt-3">
+    <div class="card mt-5">
+        <div class="card-header bg-warning text-white">
+            <span class="sld-text-heading-small">Expense Reimbursements</span>
+        </div>
+
+        <div class="card-body">
+            <div class="search-container">
+                <div>
+                    <button type="button" class="btn btn-warning" (click)="toggleAddForm()">Create New Request</button>
+                    <div class="card mt-5" *ngIf="toggleAdd">
+                        <div class="card-header bg-warning text-white">Create A Reimbursment Request</div>
+                        <form #myFormTemplate="ngForm" (ngSubmit)="addRequest()">
+                            <div class="card-body">
+                                <div class="mb-3 mt-3">
+                                    <label for="title" class="form-label">User Id:</label>
+                                    {{ currentEmployee.userID }}
+                                    <input type="text"
+                                           class="form-control" 
+                                           id="userId"
+                                           name="requestUserId"
+                                           required #myrequestUserId="ngModel"
+                                           [(ngModel)]="newRequest.userId">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="type" class="form-label">Request Type:</label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="type" 
+                                           placeholder="Enter request type"
+                                           name="requestType"
+                                           required #myType="ngModel"
+                                           [(ngModel)]="newRequest.reqType">
+                                    <div *ngIf="!myType.valid" class="small text-danger">Request Type requested!</div>
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="amount" class="form-label">Request Amount:</label>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="amount" 
+                                           placeholder="Enter request amount"
+                                           name="requestAmount"
+                                           required #myAmount="ngModel"
+                                           [(ngModel)]="newRequest.reqAmount">
+                                    <div *ngIf="!myAmount.valid" class="small text-danger">Request Amount requested!</div>
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="managerId" class="form-label">Manager:</label>
+                                    <select class="form-select" id="managerId" [(ngModel)]="newRequest.manager" name="manager">
+                                        
+                                        <!-- <input id="role" class="form-control" hidden="hidden" placeholder="select role" name="userRole" [(ngModel)]="newUser.role_id"> -->
+                                        <option value="0"></option>
+                                        <option value="1">Bruno</option>
+                                        <option value="2">Levi</option>
+                                    </select>
+                                </div>
+                                <div class="card-footer bg-warning">
+                                    <button [disabled]="!myFormTemplate.valid" type="submit" class="btn btn-light">
+                                        ADD
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>User ID</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Submited Date</th>
+                                <th>Approveed Date</th>
+                                <th>Manager</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let request of allEpRequests">
+                                <td>{{ request.reqId }}</td>
+                                <td>{{ request.userId }}</td>
+                                <td type="password" placeholder="Password">{{ request.reqType }}</td>
+                                <td>{{ request.reqAmount | currency }}</td>
+                                <td>{{ request.reqStatus }}</td>
+                                <td>{{ request.submitDate }}</td>
+                                <td>{{ request.approveDate }}</td>
+                                <td>{{ request.manager }}</td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        
+    </div>
+</div>

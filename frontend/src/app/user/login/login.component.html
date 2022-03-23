@@ -1,0 +1,67 @@
+<form (ngSubmit)="validateUser()" class="form-container text-center">
+    <h2 class="fw-bolder mb-4 text-center">Login
+        <div class="text-warning">{{ errorMessage }}</div>
+    </h2>
+
+    <div class="card-body col-md-6 offset-md-3">
+    <div class="mb-3 mt-3">
+        <label for="username" class="form-label">
+            <h5>Username:</h5>
+        </label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="username" 
+            placeholder="Enter username" 
+            name="userName" 
+            required
+            #myUserName="ngModel" 
+            [(ngModel)]="newUser.username">
+        <div *ngIf="!myUserName.valid" class="small text-danger">Username requested!</div>
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">
+            <h5>Password:</h5>
+        </label>
+        <input 
+            type="password" 
+            class="form-control" 
+            id="pwd" 
+            placeholder="Enter password" 
+            name="userPswd" required
+            #myPwd="ngModel" 
+            [(ngModel)]="newUser.password">
+        <div *ngIf="!myPwd.valid" class="small text-danger">Username requested!</div>
+    </div>
+    <div>
+        <!-- <label for="role" class="form-label">Role:</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="role" 
+            placeholder="Enter role" 
+            name="userRole" required
+            #myRole="ngModel" 
+            [(ngModel)]="newUser.role_id">
+        <div *ngIf="!myRole.valid" class="small text-danger">Role requested!</div> -->
+
+        <label for="role" class="form-label">
+            <h5>Role:</h5>
+        </label>
+        <select class="form-select" id="role" [(ngModel)]="newUser.role_id" name="role-id">
+            
+            <!-- <input id="role" class="form-control" hidden="hidden" placeholder="select role" name="userRole" [(ngModel)]="newUser.role_id"> -->
+            <option value="0"></option>
+            <option value="1">Manager</option>
+            <option value="2">Employee</option>
+        </select>
+    </div>
+    </div>
+    
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Login</button>
+        <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+     <a id="reset" class="text-decoration-none" routerLink="forgot-password">Forgot Password?</a>
+</form>
+
