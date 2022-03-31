@@ -1,6 +1,6 @@
 # requestProject
 Ers
-This project was generated with Angular CLI version 13.2.5.
+This project was generated with Angular  CLI version 13.2.5.JUnit, PostgreSQL, Spring Boot, Java, TypeScript, Spring Framework, DevOps, Spring Data
 
 Development server
 Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
